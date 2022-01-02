@@ -19,11 +19,16 @@ const addToastAlert=()=>{
     parentTag.style.bottom=`0px`;
   },1000);
   toastButtonTag.addEventListener("click",()=>{
-      parentTag.style.bottom=`-${parentTag.offsetHeight}px`;
+    localStorage.setItem("accepted","1");
+    parentTag.style.bottom=`-${parentTag.offsetHeight}px`;
 
 
   })
 }
 window.addEventListener("load",()=>{
-  addToastAlert();
+  const accepted=localStorage.getItem("accepted");//null
+  if(accepted!=="1"){
+    addToastAlert();
+  }
+  
 })
